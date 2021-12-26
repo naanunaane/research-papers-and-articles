@@ -1,0 +1,115 @@
+---
+title: "Summary- Resource Provisioning for DNN Training"
+author: "Suprit M Kulkarni"
+subtitle: v.21.12.01 | 
+  `r params$paper.title`
+output:
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+    toc_depth: 6
+    number_sections : false
+fig_width: 9 
+fig_height: 6 
+editor_options: 
+  markdown: 
+    wrap: 72
+params:
+  paper.title: 
+    value : "Cynthia: Cost-Efficient Cloud Resource Provisioning for Predictable Distributed Deep Neural Network Training"
+  authors:
+    value: "Zheng et al"
+  conference:
+    value: "International Conference on Parallel Processing (ICPP) - 2019"
+  release.dates:
+    value: "Aug 5-8, 2019"
+  off.link:
+    value: "https://dl.acm.org/doi/10.1145/3337821.3337873"
+  sci.link:
+    value: "https://fangmingliu.github.io/files/ICPP2019-distributed-ML.pdf"
+---
+
+<style type="text/css">
+.main-container{
+  max-width:100vw !important;
+}
+</style>
+---
+
+```{r setup, purl=FALSE,include=FALSE}
+library(knitr)
+library(htmltools)
+
+knitr::opts_chunk$set(
+  echo    = TRUE,
+  comment = NA,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE
+)
+data_table_options <- list(
+  paging = FALSE,
+  escape = FALSE,
+  scrollX = TRUE,
+  searching = FALSE
+)
+
+paste("Defaults set for all chunks") 
+
+```
+
+```{r libraries, purl=FALSE}
+library(dplyr)
+library(kableExtra)
+options(scipen=999)
+```
+
+
+## Objective
+
+The objective of this document is to summarise the research paper titled `r params$paper.title`
+
+```{r intro, purl=FALSE}
+df <- data.frame(
+  "Particular" = c(
+    "Paper Title",
+    "Authors",
+    "Release Journal/Conference",
+    "Release Date",
+    "Official Link to Paper",
+    "Sci-hub/Free Link to Paper"
+  ),
+  
+  "Details" = c(
+    params$paper.title,
+    params$authors,
+    params$conference,
+    params$release.date,
+    params$off.link,
+    params$sci.link
+  ),
+  
+  "Description" = c(
+    "-",
+    "-",
+    "https://www.hpcs.cs.tsukuba.ac.jp/icpp2019/",
+    "-",
+    "Association of Computing Machinery",
+    "Github page by one of the authors"
+  )
+)
+
+
+colnames(df) <- c("Particular", "Values", "Description")
+  
+df %>%  kable() %>% 
+kable_styling(c("striped", 
+                "bordered", 
+                "hover")) %>% 
+row_spec(row = 0, 
+         background = "#666", 
+         color="#FFF") 
+```
+
+## Abstract & Introduction
